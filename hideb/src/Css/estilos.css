@@ -1,0 +1,48 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid blue; */
+
+}
+
+img{
+    max-width: 100%;
+}
+
+.contenedor{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    height: 100vh;
+}
+
+.principal{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-column: 1/2;
+    padding: 2rem;
+    margin: 2rem 2rem;
+}
+
+.tarjetas{
+    grid-column: 2/3;
+    background-color: rgb(223, 237, 100);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid red;
+    /* margin: 0 auto; */
+    padding: 1rem;
+
+}
+
+/* .cabececera{
+    background-image: url(../Imagenes/kitchen.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: grid;
+    grid-template-columns: 1fr;
+    } */
+
