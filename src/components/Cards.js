@@ -1,49 +1,39 @@
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import React from 'react'
 import Card from './Card'
-import image1 from '../images/cocina1.jpg'
-import image2 from '../images/cocin2.jpg'
-import image3 from '../images/cocina1.jpg'
 
+import { obtenerLocal} from "../Services/localServices";
 
+function Cards() {
 
-const  tarjetas=[
-    {
-        id:1,
-        title:'item1',
-        image:image1,
-        url:"https://faztweb.com/"
-    },
-    {
-        id:2,
-        title:'item2',
-        image:image2,
-        url:"https://blog.faztweb.com/"
-    },
-    {
-        id:3,
-        title:'item3',
-        image:image2,
-        url:"https://youtube.com/fazttech"
-    },
+    const [locales,setLocales]= useState([]);
 
-    {
-        id:4,
-        title:'item4',
-        image:image3,
-        url:"https://youtube.com/fazttech"
+    const getLocales=async()=>{
+
+        try {
+            const localesObtenidos=await obtenerLocal();
+            console.table(localesObtenidos);
+            setLocales(localesObtenidos);
+        } catch (error) {
+            console.log(error);
+            
+        }
     }
 
-];
-function Cards() {
+    useEffect(() => {
+        getLocales();
+    }, []);
+
+
     return (
         <div className="container d-flex justyfy-content-center h-100 align-items-center ">
             
                        
             <div className="row">
-                { 
-                    tarjetas.map(card =>(
+                {locales.map(card =>(
                         <div className="col-md-3" key ={card.id}>
-                            <Card title={card.title} imageSource={card.image} url={card.url}/>
+                            <Card title={card.titulo} price={card.precio} imageSource={card.imagen} description={card.descripcion} ubicacion={card.ubicacion}/>
                         </div>
                     ))
                 }
